@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Highlight CSS -->
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/sunburst.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- Highlight code -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    <script>
+        hljs.configure({
+            tabReplace: '  ', // 4 spaces
+        });
+        hljs.initHighlightingOnLoad();
+    </script>
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div id="navi">
+        <!-- Define -->
+        {{ define "pkgs" }}
+        <ul class="list-pkg">
+            {{ range $name, $pkg := . }}
+            <li><a href="/pkg/{{ $pkg.Pname }}">{{ $name }}</a></li>
+            {{ template "pkgs" $pkg.Navis }}
+            {{ end }}
+        </ul>
+        {{ end }}
+        <!-- End define -->
+
+        <div id="navi-brand"></div>
+        <div id="navi-menu">
+        {{ template "pkgs" .Navi}}
+        </div>
+        <!--
+        <div id="decls">
+            <ul>
+            {{ range .Decls }}
+            <li>{{ . }}</li>
+            {{ end }}
+            </ul>
+        </div>
+        -->
+        <!--
+        <div id="funcs">
+            <h5>Functions</h5>
+            <ul>
+            {{ range .Funcs}}
+            <li>{{ . }}</li>
+            {{ end }}
+            </ul>
+        </div>
+        -->
+    </div>
+    <div id="content">
+        <div id="header">
+            <h1 id="pkg-name">{{ .Pkg.Name }}</h1>
+            <div id="pkg-doc"><pre>{{ .Pkg.Doc }}</pre></div>
+        </div>
+        <div id="code-comment" class="container-fluid">
+            {{ range $fname, $file := .Pkg.Files}}
+                <div class="row"><div class="file-name">// {{ $fname }}</div></div>
+                {{ with $file.Decls }}
+                    {{ range . }}
+                        <div class="row">
+                            <div class="code">
+                                <pre><code class="go">{{.Code}}</code></pre>
+                            </div>
+                            <div class="doc">
+                                <pre>{{.Doc}}</pre>
+                            </div>
+                        </div>
+                    {{ end }}
+                {{ end }}
+                {{ with $file.Funcs }}
+                    {{ range . }}
+                        <div class="row">
+                            <div class="code">
+                                <pre><code class="go">{{.Code}}</code></pre>
+                            </div>
+                            <div class="doc">
+                                <pre>{{.Doc}}</pre>
+                            </div>
+                        </div>
+                    {{ end }}
+                {{ end }}
+            {{end}}
+        </div>
+    </div>
+    <div id="footer"></div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

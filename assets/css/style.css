@@ -1,0 +1,73 @@
+div.doc{
+    padding-top:0.2em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    text-align: justify;
+    width:50%; 
+    min-width: 340px;
+    float:left;
+}
+
+div.code{
+    font-family: "Monaco", "Sans Mono", "Consolas", "Courier", "monospace";
+    font-size: small;
+    background: #000;
+    width:50%; 
+    min-width:340px;
+    overflow-wrap: break-word;
+    float:left;
+}
+
+div > pre {
+    margin: 0;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+#navi {
+    width: 200px;
+    float: left;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow-y: hidden;
+}
+
+#content {
+    position: absolute;
+    left: 200px;
+}
+
+#navi-brand {
+    background-color: black;
+    width:200px;
+    height:56px;
+
+}
+
+.list-pkg {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.file-name{
+    font-family: "Monaco", "Sans Mono", "Consolas", "Courier", "monospace";
+    font-size: small;
+    background: #000;
+    color: gray;
+    width:50%; 
+    min-width:340px;
+    overflow-wrap: break-word;
+    float:left;
+}
+
+#pkg-doc{
+    padding-top:0.2em;
+    padding-left:0.5em;
+    padding-right:0.5em;
+    text-align: justify;
+}
